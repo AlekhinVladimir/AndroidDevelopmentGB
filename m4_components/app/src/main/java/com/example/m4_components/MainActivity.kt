@@ -1,103 +1,69 @@
 package com.example.m4_components
 
-
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
-import androidx.core.widget.doAfterTextChanged
+import androidx.core.widget.doOnTextChanged
 import com.example.m4_components.databinding.ActivityMainBinding
 import kotlin.random.Random
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityMainBinding
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
+        val binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        initActivityState()
-    }
 
-    private fun checkConditions(): Boolean {
-        val conditionNameField = binding.textInputName.length() in 1..40
-        val conditionPhoneField = binding.textInputPhone.text.toString().isNotBlank() &&
-                binding.textInputPhone.toString().isNotEmpty()
-        val conditionSexIsChecked = binding.radioButtonMale.isChecked ||
-                binding.radioButtonFemale.isChecked
+        binding.nameText.doOnTextChanged { text, _, _, count -> checkAndEnableSaveButton(binding) }
 
-        val conditionNotificationSwitch = (binding.switchNotification.isChecked &&
-                binding.checkBoxAuthorization.isChecked || binding.checkBoxNewItems.isChecked)
-                || !binding.switchNotification.isChecked
-
-        return conditionSexIsChecked && conditionNameField
-                && conditionPhoneField && conditionNotificationSwitch
-    }
-
-    private fun changeSaveButtonState() {
-        if (checkConditions()) {
-            binding.buttonSave.isEnabled = true
-        } else {
-            binding.buttonSave.isEnabled = false
+        binding.phoneTextView.doOnTextChanged { text, _, _, _ -> checkAndEnableSaveButton(binding) }
+        binding.maleRadioButton.setOnCheckedChangeListener { _, _ ->
+            checkAndEnableSaveButton(
+                binding
+            )
         }
-    }
-
-
-    private fun initActivityState() {
-        val numberOfPoints = Random.nextInt(101)
-
-        binding.progressBar.secondaryProgress = numberOfPoints
-
-        binding.textViewPointsOfNumber.text =
-            String.format(getString(R.string.points_of_number, numberOfPoints))
-
-        binding.checkBoxNewItems.setOnCheckedChangeListener { buttonView, isChecked ->
+        binding.femaleRadioButton.setOnCheckedChangeListener { _, _ ->
+            checkAndEnableSaveButton(
+                binding
+            )
+        }
+        binding.reciveNotificationSwitch.setOnCheckedChangeListener { _, isChecked ->
+            checkAndEnableSaveButton(binding)
             if (isChecked) {
-                changeSaveButtonState()
+                binding.aboutAuthorizationOnDeviceCheckBox.isEnabled = true
+                binding.aboutNewProductsAndOffersCheckBox.isEnabled = true
             } else {
-                changeSaveButtonState()
+                binding.aboutAuthorizationOnDeviceCheckBox.isEnabled = false
+                binding.aboutNewProductsAndOffersCheckBox.isEnabled = false
             }
         }
-
-        binding.checkBoxAuthorization.setOnCheckedChangeListener { buttonView, isChecked ->
-            if (isChecked) {
-                changeSaveButtonState()
-            } else {
-                changeSaveButtonState()
-            }
+        binding.aboutAuthorizationOnDeviceCheckBox.setOnCheckedChangeListener { _, _ ->
+            checkAndEnableSaveButton(
+                binding
+            )
         }
-
-        binding.textInputName.doAfterTextChanged {
-            changeSaveButtonState()
+        binding.aboutNewProductsAndOffersCheckBox.setOnCheckedChangeListener { _, _ ->
+            checkAndEnableSaveButton(
+                binding
+            )
         }
+        binding.progressBar.progress = Random.nextInt(101)
 
-        binding.textInputPhone.doAfterTextChanged {
-            changeSaveButtonState()
-        }
-
-
-        binding.switchNotification.setOnCheckedChangeListener { _, isChecked ->
-            if (isChecked) {
-                binding.checkBoxAuthorization.isEnabled = true
-                binding.checkBoxNewItems.isEnabled = true
-                changeSaveButtonState()
-            } else {
-                binding.checkBoxAuthorization.isEnabled = !binding.checkBoxAuthorization.isEnabled
-                binding.checkBoxNewItems.isEnabled = !binding.checkBoxNewItems.isEnabled
-                binding.checkBoxAuthorization.isChecked = false
-                binding.checkBoxNewItems.isChecked = false
-                changeSaveButtonState()
-            }
-        }
-
-
-        binding.radioGroupForChoiceSex.setOnCheckedChangeListener { _, _ ->
-            changeSaveButtonState()
-        }
-
-        binding.buttonSave.setOnClickListener {
-            Toast.makeText(this, R.string.toast_text, Toast.LENGTH_SHORT).show()
+        binding.saveButton.setOnClickListener {
+            Toast.makeText(this, "Информация сохранена", Toast.LENGTH_SHORT).show()
         }
     }
 
+    private fun checkAndEnableSaveButton(binding: ActivityMainBinding) {
+        val isNameValid =
+            !binding.nameText.text.isNullOrEmpty() && binding.nameText.text!!.length <= 40
+        val isPhoneValid = !binding.phoneTextView.text.isNullOrEmpty()
+        val isGenderSelected =
+            binding.maleRadioButton.isChecked || binding.femaleRadioButton.isChecked
+        val isNotificationValid = !binding.reciveNotificationSwitch.isChecked ||
+                (binding.aboutAuthorizationOnDeviceCheckBox.isChecked ||
+                        binding.aboutNewProductsAndOffersCheckBox.isChecked)
+
+        binding.saveButton.isEnabled =
+            isNameValid && isPhoneValid && isGenderSelected && isNotificationValid
+    }
 }

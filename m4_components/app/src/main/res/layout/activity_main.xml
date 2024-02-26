@@ -1,174 +1,188 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <ImageView
-        android:id="@+id/userImage"
-        android:src="@drawable/icons8___160"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:contentDescription="@string/user_image"
-        android:layout_marginTop="32dp"/>
-
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/inputLayoutName"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/hint_name"
-        app:endIconMode="clear_text"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="16dp"
-        app:counterEnabled="true"
-        app:counterMaxLength="40"
-        app:layout_constraintTop_toBottomOf="@+id/userImage"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        android:padding="@dimen/default_margin"
+        tools:context=".MainActivity"
+        tools:ignore="UseSwitchCompatOrMaterialXml">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/textInputName"
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:scaleType="fitCenter"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/toxic"
+            tools:ignore="MissingConstraints" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/nameInputLayout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:hint="@string/name"
+            android:textAppearance="@style/MyTextAppearance"
+            app:counterEnabled="true"
+            app:counterMaxLength="40"
+            app:endIconMode="clear_text"
+            app:errorEnabled="true"
+            app:layout_constraintTop_toBottomOf="@id/imageView"
+            tools:layout_editor_absoluteX="20dp">
 
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/nameText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/white" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/inputLayoutPhone"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
-        android:hint="@string/hint_phone"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintTop_toBottomOf="@+id/inputLayoutName"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/textInputPhone"
-            android:inputType="phone"
-            android:background="#BB86FC"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/phoneTextViewLayout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-    </com.google.android.material.textfield.TextInputLayout>
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/MyTextAppearance"
+            app:boxBackgroundColor="@color/purple_200"
+            app:layout_constraintTop_toBottomOf="@id/nameInputLayout">
 
-    <TextView
-        android:id="@+id/textViewSex"
-        android:textAppearance="@style/MainStyleText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/sex"
-        android:textColor="#000000"
-        app:layout_constraintStart_toStartOf="@+id/inputLayoutPhone"
-        app:layout_constraintTop_toBottomOf="@+id/inputLayoutPhone"
-        android:layout_marginTop="16dp"/>
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/phoneTextView"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:hint="@string/phoneNumber"
+                android:inputType="phone" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-    <RadioGroup
-        android:id="@+id/radioGroupForChoiceSex"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/textViewSex"
-        app:layout_constraintStart_toStartOf="@id/textViewSex"
-        android:layout_marginTop="16dp">
-        <RadioButton
-            android:id="@+id/radioButtonMale"
-            android:text="@string/male"
-            android:checked="false"
+        <TextView
+            android:id="@+id/genderTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/gender"
+            android:textAppearance="@style/MyTextAppearance"
+            app:layout_constraintTop_toBottomOf="@id/phoneTextViewLayout" />
+
+        <RadioGroup
+            android:id="@+id/genderRadioGroup"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-        <RadioButton
-            android:id="@+id/radioButtonFemale"
-            android:text="@string/female"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/MyTextAppearance"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/genderTextView"
+            tools:ignore="MissingConstraints">
+
+            <RadioButton
+                android:id="@+id/maleRadioButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/male"
+                tools:ignore="MissingConstraints" />
+
+            <RadioButton
+                android:id="@+id/femaleRadioButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/female"
+                tools:ignore="MissingConstraints" />
+        </RadioGroup>
+
+        <com.google.android.material.switchmaterial.SwitchMaterial
+            android:id="@+id/reciveNotificationSwitch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
             android:checked="false"
+            android:text="@string/reciveNotification"
+            android:textAppearance="@style/MyTextAppearance"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/genderRadioGroup"
+            app:thumbTint="@color/purple_700"
+            app:trackTint="@color/purple_100" />
+
+        <CheckBox
+            android:id="@+id/aboutAuthorizationOnDeviceCheckBox"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-    </RadioGroup>
+            android:layout_height="wrap_content"
+            android:buttonTint="@color/design_default_color_secondary"
+            android:enabled="false"
+            android:text="@string/aboutAuthorizationOnDevice"
+            android:textAppearance="@style/MyTextAppearance"
+            app:layout_constraintTop_toBottomOf="@id/reciveNotificationSwitch"
+            tools:ignore="MissingConstraints" />
 
-    <Switch
-        android:id="@+id/switchNotification"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:checked="false"
-        android:text="@string/switch_notification"
-        app:layout_constraintTop_toBottomOf="@id/radioGroupForChoiceSex"
-        app:layout_constraintStart_toStartOf="@id/radioGroupForChoiceSex"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="16dp"
-        tools:ignore="UseSwitchCompatOrMaterialXml"/>
+        <CheckBox
+            android:id="@+id/aboutNewProductsAndOffersCheckBox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:buttonTint="@color/design_default_color_secondary"
+            android:enabled="false"
+            android:text="@string/aboutNewProductsAndOffers"
+            android:textAppearance="@style/MyTextAppearance"
+            app:layout_constraintTop_toBottomOf="@id/aboutAuthorizationOnDeviceCheckBox"
+            tools:ignore="MissingConstraints" />
 
-    <CheckBox
-        android:id="@+id/checkBoxAuthorization"
-        android:theme="@style/MyCheckBox"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:enabled="false"
-        android:text="@string/authorization_text"
-        app:layout_constraintTop_toBottomOf="@id/switchNotification"
-        app:layout_constraintStart_toStartOf="@id/textViewSex"/>
+        <LinearLayout
+            android:id="@+id/pointsTextViewLinearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/aboutNewProductsAndOffersCheckBox">
 
-    <CheckBox
-        android:id="@+id/checkBoxNewItems"
-        android:theme="@style/MyCheckBox"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:enabled="false"
-        android:text="@string/newItems_text"
-        app:layout_constraintTop_toBottomOf="@id/checkBoxAuthorization"
-        app:layout_constraintStart_toStartOf="@id/textViewSex"/>
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/pointsTextView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                app:counterEnabled="true"
+                app:layout_constraintStart_toStartOf="parent">
 
-    <TextView
-        android:id="@+id/textViewPointsText"
-        android:textAppearance="@style/MainStyleText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/points_text"
-        android:textColor="#000000"
-        app:layout_constraintStart_toStartOf="@+id/textViewSex"
-        app:layout_constraintTop_toBottomOf="@+id/checkBoxNewItems"
-        android:layout_marginTop="16dp"/>
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/pointsText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:text="@string/points"
+                    android:textAppearance="@style/MyTextAppearance" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-    <TextView
-        android:id="@+id/textViewPointsOfNumber"
-        android:textAppearance="@style/MainStyleText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/points_of_number"
-        android:textColor="#444444"
-        app:layout_constraintEnd_toEndOf="@+id/progressBar"
-        app:layout_constraintTop_toTopOf="@+id/textViewPointsText"/>
+            <TextView
+                android:id="@+id/charCount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="@string/pointsCounter"
+                android:textColor="@color/grey" />
+        </LinearLayout>
 
-    <ProgressBar
-        android:id="@+id/progressBar"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintStart_toStartOf="@+id/inputLayoutName"
-        app:layout_constraintEnd_toEndOf="@id/inputLayoutPhone"
-        app:layout_constraintTop_toBottomOf="@+id/textViewPointsText"
-        android:layout_marginTop="16dp"
-        tools:visibility="visible" android:layout_marginStart="16dp" android:layout_marginEnd="16dp"/>
+        <com.google.android.material.progressindicator.LinearProgressIndicator
+            android:id="@+id/progressBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:progress="50"
+            app:indicatorColor="@color/purple_500"
+            app:layout_constraintTop_toBottomOf="@id/pointsTextViewLinearLayout"
+            app:trackColor="@color/purple_100"
+            tools:ignore="MissingConstraints,NotSibling" />
 
-    <Button
-        android:id="@+id/buttonSave"
-        android:text="@string/button_save_text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:enabled="false"
-        app:layout_constraintStart_toStartOf="@+id/inputLayoutName"
-        app:layout_constraintEnd_toEndOf="@id/inputLayoutPhone"
-        app:layout_constraintTop_toBottomOf="@+id/progressBar"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="16dp"/>
-
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/saveButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/purple_700"
+            android:enabled="false"
+            android:text="@string/saveButton"
+            android:textColor="@color/white"
+            app:cornerRadius="20dp"
+            app:layout_constraintTop_toBottomOf="@id/progressBar"
+            tools:ignore="MissingConstraints" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
