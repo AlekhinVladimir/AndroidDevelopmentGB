@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">MusicQUIZ</string>
+
+    <string name="button_welcome_text">Start</string>
+    <string name="button_quiz_text">Submit</string>
+    <string name="button_result_text">Start again</string>
+
+    <string name="image_description">welcome image</string>
+    <string name="music_quiz">MUSIC QUIZ</string>
+    <string name="result_title">Your result:</string>
+
+    <string name="question_1" />
+    <string name="answer_to_1_1" />
+    <string name="answer_to_1_2" />
+
+    <string name="question_2" />
+    <string name="answer_to_2_1" />
+    <string name="answer_to_2_2" />
+
+    <string name="question_3" />
+    <string name="answer_to_3_1" />
+    <string name="answer_to_3_2" />
+</resources>
