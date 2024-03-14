@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">MusicQUIZ</string>
+
+    <string name="button_welcome_text">Start</string>
+    <string name="button_quiz_text">Submit</string>
+    <string name="button_result_text">Start again</string>
+    <string name="button_welcome_date">Enter the date of birth</string>
+    <string name="date_dialoge_text">Enter your date of birth</string>
+
+    <string name="image_description">welcome image</string>
+    <string name="music_quiz">MUSIC QUIZ</string>
+    <string name="result_title">Your result:</string>
+
+</resources>

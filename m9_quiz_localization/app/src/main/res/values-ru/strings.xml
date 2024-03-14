@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">MusicQUIZ</string>
+
+    <string name="button_welcome_text">Начать</string>
+    <string name="button_quiz_text">Отправить</string>
+    <string name="button_result_text">Начать заново</string>
+    <string name="button_welcome_date">Ввести дату рождения</string>
+    <string name="date_dialoge_text">Введите вашу дату рождения</string>
+
+    <string name="image_description">welcome image</string>
+    <string name="music_quiz">MUSIC QUIZ</string>
+    <string name="result_title">Ваш результат:</string>
+
+</resources>
