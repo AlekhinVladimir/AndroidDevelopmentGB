@@ -10,53 +10,43 @@ import java.io.IOException
 
 private const val FILE_NAME="testFile.txt"
 class MainActivity : AppCompatActivity() {
-//    private var _binding: ActivityMainBinding? = null
-//    private val binding: ActivityMainBinding
-//        get() {
-//            return _binding!!
-//        }
-//    private lateinit var repository: Repository
     private lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-//        repository = Repository(this)
-
-//        binding.textViewSaveData.text=repository.getText()
+        val savedText = getTextFromSharedPreference()
+        binding.textViewSaveData.text = savedText
 
         binding.saveDataButton.setOnClickListener {
             val inputText = binding.editText.text
             saveText(inputText.toString())
-//            repository.saveText(outString)
-//            binding.textViewSaveData.text=outString
         }
 
         binding.getDataButton.setOnClickListener {
             val readedText = readText()
 
-//            repository.saveText(outString)
             binding.textViewSaveData.text = readedText
         }
     }
-//    override fun onPause() {
-//        super.onPause()
-//        // Сохранение текста при приостановке активности
-//        val currentText = binding.editText.text.toString()
-//        repository.saveText(currentText)
-//    }
-//
-//    override fun onDestroy() {
-//        super.onDestroy()
-//        _binding = null
-//    }
+    private fun saveTextToSharedPreference(text: String) {
+        val sharedPref = getSharedPreferences("MyPref", MODE_PRIVATE)
+        val editor = sharedPref.edit()
+        editor.putString("savedText", text)
+        editor.apply()
+    }
+    private fun getTextFromSharedPreference(): String {
+        val sharedPref = getSharedPreferences("MyPref", MODE_PRIVATE)
+        return sharedPref.getString("savedText", "") ?: ""
+    }
 
     private fun saveText(textForSave: String) {
         var fos: FileOutputStream? = null
         try {
             fos = openFileOutput(FILE_NAME, MODE_PRIVATE)
             fos.write(textForSave.toByteArray())
+            saveTextToSharedPreference(textForSave)
 
             Toast.makeText(this, "Файл сохранен", Toast.LENGTH_SHORT).show()
         } catch (ex: IOException) {
