@@ -31,6 +31,7 @@ class MainActivity : AppCompatActivity() {
 
         binding.clearDataButton.setOnClickListener{
             deleteFile(FILE_NAME)
+            binding.editText.text.clear()
         }
     }
     private fun saveTextToSharedPreference(text: String) {
