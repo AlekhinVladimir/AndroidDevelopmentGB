@@ -26,8 +26,11 @@ class MainActivity : AppCompatActivity() {
 
         binding.getDataButton.setOnClickListener {
             val readedText = readText()
-
             binding.textViewSaveData.text = readedText
+        }
+
+        binding.clearDataButton.setOnClickListener{
+            deleteFile(FILE_NAME)
         }
     }
     private fun saveTextToSharedPreference(text: String) {
@@ -70,4 +73,6 @@ class MainActivity : AppCompatActivity() {
             fis?.close()
         }
     }
+
+
 }
