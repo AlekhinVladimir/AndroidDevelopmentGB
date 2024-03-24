@@ -1,6 +1,0 @@
-<resources>
-    <string name="app_name">m11_timer_data_storage</string>
-    <string name="save_data">Сохранить данные</string>
-    <string name="get_data">Загрузить данные</string>
-    <string name="clear_data">Очистить данные</string>
-</resources>
