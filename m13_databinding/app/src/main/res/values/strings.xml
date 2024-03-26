@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">m13_databinding</string>
+    <string name="search_query">Enter a request</string>
+    <string name="result_request">The result of the query will be displayed here</string>
+</resources>
