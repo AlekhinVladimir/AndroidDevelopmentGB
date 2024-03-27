@@ -15,6 +15,7 @@ import androidx.constraintlayout.widget.ConstraintSet
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.isVisible
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.lifecycleScope
 import kotlinx.coroutines.*
 import com.example.m13_databinding.R
@@ -26,7 +27,7 @@ class MainFragment : Fragment() {
 
     private var _binding : FragmentMainBinding? = null
     private val binding get() = _binding!!
-    private val viewModel: M by ()
+    private val viewModel: MainViewModel by viewModels()
     private lateinit var constraintLayout: ConstraintLayout
     private lateinit var constraintSetStart: ConstraintSet
     private lateinit var constraintSetEnd: ConstraintSet

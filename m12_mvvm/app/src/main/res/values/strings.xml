@@ -1,5 +1,0 @@
-<resources>
-    <string name="app_name">m12_mvvm</string>
-    <string name="search">Поиск</string>
-    <string name="default_text_results">Здесь будет отображаться результат</string>
-</resources>

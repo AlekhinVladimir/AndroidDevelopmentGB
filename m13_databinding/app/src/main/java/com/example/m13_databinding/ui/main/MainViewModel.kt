@@ -8,10 +8,11 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.debounce
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
+import com.example.m13_databinding.ui.main.MainRepository
 
 class MainViewModel : ViewModel() {
     val state = MutableStateFlow<State>(State.Success)
-
+    private val repository = MainRepository()
     private val requestString = MutableStateFlow("")
     val responseString = MutableStateFlow("")
     private var searchProcess: Job? = null
@@ -38,3 +39,4 @@ class MainViewModel : ViewModel() {
                 .launchIn(viewModelScope)
         }
     }
+}
