@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">m12_mvvm</string>
     <string name="enter_text_for_searching">Enter text for searching</string>
+    <string name="search_results">По запросу %1$s найдено %2$d результатов</string>
 </resources>

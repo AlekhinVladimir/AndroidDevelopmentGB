@@ -12,15 +12,13 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.example.m12_mvvm.databinding.FragmentSearchBinding
+import com.redmadrobot.extensions.viewbinding.viewBinding
 import kotlinx.coroutines.launch
 
 
 class SearchFragment : Fragment() {
-    companion object {
-        fun newInstance() = SearchFragment()
-    }
 
-    private lateinit var binding: FragmentSearchBinding
+    private val binding: FragmentSearchBinding by viewBinding()
     private val viewModel: SearchViewModel by viewModels()
 
     override fun onCreateView(
@@ -28,8 +26,7 @@ class SearchFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentSearchBinding.inflate(inflater, container, false)
-        return binding.root
+        return inflater.inflate(R.layout.fragment_search, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -57,8 +54,8 @@ class SearchFragment : Fragment() {
                             val results = state.results
 
                             // Обновите UI с результатами поиска
-                            binding.tvResult.text =
-                                "По запросу $searchText найдено ${results.size} результатов"
+                            val searchResultsString = resources.getString(R.string.search_results, searchText, results.size)
+                            binding.tvResult.text = searchResultsString
                         }
 
                         is State.Error -> {
