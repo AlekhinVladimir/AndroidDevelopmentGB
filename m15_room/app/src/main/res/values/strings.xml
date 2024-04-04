@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">m15_room</string>
+    <string name="word_input_field_hint">Your word</string>
+    <string name="add_word_button_text">add</string>
+    <string name="clear_db_button_text">clear</string>
+    <string name="no_data_result_text">"DB is empty "</string>
+    <string name="illegal_word_symbol">only the letters of the alphabet and \"-\" are available</string>
+
+</resources>
