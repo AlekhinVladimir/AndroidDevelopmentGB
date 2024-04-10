@@ -16,6 +16,10 @@ converterMoshi = "2.11.0"
 coil = "2.6.0"
 moshiKotlin = "1.15.1"
 kotlinReflect = "2.0.0-Beta5"
+lifecycleViewmodelKtx = "2.8.0-alpha04"
+lifecycleLivedataKtx = "2.8.0-alpha04"
+lifecycleCompiler = "2.8.0-alpha04"
+moshiKotlinCodegen = "1.15.1"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -33,6 +37,10 @@ converter-moshi = { group = "com.squareup.retrofit2", name = "converter-moshi", 
 coil = { group = "io.coil-kt", name = "coil", version.ref = "coil" }
 moshi-kotlin = { group = "com.squareup.moshi", name = "moshi-kotlin", version.ref = "moshiKotlin" }
 kotlin-reflect = { group = "org.jetbrains.kotlin", name = "kotlin-reflect", version.ref = "kotlinReflect" }
+androidx-lifecycle-viewmodel-ktx = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version.ref = "lifecycleViewmodelKtx" }
+androidx-lifecycle-livedata-ktx = { group = "androidx.lifecycle", name = "lifecycle-livedata-ktx", version.ref = "lifecycleLivedataKtx" }
+androidx-lifecycle-compiler = { group = "androidx.lifecycle", name = "lifecycle-compiler", version.ref = "lifecycleCompiler" }
+moshi-kotlin-codegen = { group = "com.squareup.moshi", name = "moshi-kotlin-codegen", version.ref = "moshiKotlinCodegen" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }

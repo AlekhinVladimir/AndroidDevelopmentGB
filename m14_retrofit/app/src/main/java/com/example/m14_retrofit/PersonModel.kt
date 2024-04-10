@@ -1,8 +1,7 @@
 package com.example.m14_retrofit
+
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
-
-
 
 @JsonClass(generateAdapter = true)
 data class PersonModel(
@@ -30,6 +29,7 @@ data class DoB(
     @Json(name = "date") val date: String,
     @Json(name = "age") val age: Int
 )
+
 @JsonClass(generateAdapter = true)
 data class Picture(
     @Json(name = "large") val large: String,
