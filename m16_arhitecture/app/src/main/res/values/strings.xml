@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Clean Architecture</string>
+    <string name="text_button">refresh</string>
+    <string name="text_for_textView">Чем же мне сегодня заняться?</string>
+</resources>
